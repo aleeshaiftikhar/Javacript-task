@@ -5,27 +5,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Tasks</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="calculator">
+    <div class="tasks-container">
 
-        <div class="input-row">
-            <label for="firstBox">Enter First Number</label>
-            <input type="text" id="firstBox">
+        <!-- TASK 1 -->
+        <div class="task-card">
+            <h2>Task 1: Age to Days Converter</h2>
+            <div class="input-row">
+                <label for="ageInput">Enter Age (years)</label>
+                <input type="number" id="ageInput">
+            </div>
+            <div class="input-row result-row">
+                <label for="ageResult">Age in Days</label>
+                <input type="text" id="ageResult" readonly>
+            </div>
         </div>
 
-        <div class="input-row">
-            <label for="secondBox">Enter Second Number</label>
-            <input type="text" id="secondBox">
+        <!-- TASK 2 -->
+        <div class="task-card">
+            <h2>Task 2: Hours to Seconds</h2>
+            <div class="input-row">
+                <label for="hoursInput">Enter Hours</label>
+                <input type="number" id="hoursInput">
+            </div>
+            <div class="input-row result-row">
+                <label for="hoursResult">Seconds</label>
+                <input type="text" id="hoursResult" readonly>
+            </div>
+        </div>
+<!-- TASK 3 -->
+        <div class="task-card">
+            <h2>Task 3: Find Next Number</h2>
+
+            <!-- Scenario 1: Array Search -->
+            <p><strong>Scenario 1: Array Search</strong> [10, 20, 30, 40, 50]</p>
+            <div class="input-row">
+                <label for="arraySearchInput">Enter Number in Array</label>
+                <input type="number" id="arraySearchInput">
+            </div>
+            <div class="input-row">
+                <label for="arraySearchResult">Next in Array</label>
+                <input type="text" id="arraySearchResult" readonly>
+            </div>
+
+            <hr style="margin: 20px 0; border: 1px dashed #ccc;">
+
+            <!-- Scenario 2: Integer / Float -->
+            <p><strong>Scenario 2: Integer or Float</strong></p>
+            <div class="input-row">
+                <label for="valueInput">Enter Number</label>
+                <input type="number" step="any" id="valueInput">
+            </div>
+            <div class="input-row result-row">
+                <label for="valueResult">Next Value</label>
+                <input type="text" id="valueResult" readonly>
+            </div>
+        </div>
+        <!-- TASK 4 -->
+        <div class="task-card">
+            <h2>Task 4: Capitalize Name</h2>
+            <div class="input-row">
+                <label for="nameInput">Enter Name</label>
+                <input type="text" id="nameInput">
+            </div>
+            <div class="input-row result-row">
+                <label for="nameResult">Capitalized Name</label>
+                <input type="text" id="nameResult" readonly>
+            </div>
+        </div>
+        <!-- TASK 5 -->
+        <div class="task-card">
+            <h2>Task 5: BMI Calculator</h2>
+            <div class="input-row">
+                <label for="weightInput">Weight (kg)</label>
+                <input type="number" step="any" id="weightInput">
+            </div>
+            <div class="input-row">
+                <label for="heightInput">Height (m)</label>
+                <input type="number" step="any" id="heightInput">
+            </div>
+            <div class="input-row result-row">
+                <label for="bmiResult">Your BMI</label>
+                <input type="text" id="bmiResult" readonly>
+            </div>
         </div>
 
-        <div class="input-row result-row">
-            <label for="resultBox">Result</label>
-            <input type="text" id="resultBox" readonly>
+        <!-- TASK 6 -->
+        <div class="task-card">
+            <h2>Task 6: Random Array</h2>
+            <div class="button-row">
+                <button id="generateBtn">Generate Random Array</button>
+            </div>
+            <div class="input-row">
+                <label for="arrayDisplay">Array Elements</label>
+                <input type="text" id="arrayDisplay" readonly>
+            </div>
+            <div class="input-row result-row">
+                <label for="firstLastResult">First & Last</label>
+                <input type="text" id="firstLastResult" readonly>
+            </div>
+        </div>
+
+        <!-- TASK 7 -->
+        <div class="task-card">
+            <h2>Task 7: Three Text Boxes (Sum)</h2>
+            <div class="input-row">
+                <label for="firstBox">First Number</label>
+                <input type="number" id="firstBox">
+            </div>
+            <div class="input-row">
+                <label for="secondBox">Second Number</label>
+                <input type="number" id="secondBox">
+            </div>
+            <div class="input-row result-row">
+                <label for="resultBox">Result</label>
+                <input type="text" id="resultBox" readonly>
+            </div>
         </div>
 
     </div>

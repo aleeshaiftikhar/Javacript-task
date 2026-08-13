@@ -1,175 +1,209 @@
 // ===============================
 // TASK 1: Age to Days Converter
 // ===============================
+const ageInput = document.getElementById("ageInput");
+const ageResult = document.getElementById("ageResult");
 
-function ageToDays(age) {
-    return age * 365;
-}
-
-let age = Number(prompt("Task 1: Enter your age in years:"));
-
-if (!isNaN(age)) {
-    console.log("Age in days:", ageToDays(age));
-}
+ageInput.addEventListener("input", function () {
+    let age = Number(ageInput.value);
+    
+    if (ageInput.value === "") {
+        ageResult.value = "";
+    } else if (age <= 0) {
+        ageResult.value = "Error: Age must be greater than 0";
+    } else {
+        ageResult.value = age * 365;
+    }
+});
 
 
 // ===============================
 // TASK 2: Hours to Seconds
 // ===============================
+const hoursInput = document.getElementById("hoursInput");
+const hoursResult = document.getElementById("hoursResult");
 
-function hoursToSeconds(hours) {
-    return hours * 60 * 60;
-}
-
-let hours = Number(prompt("Task 2: Enter hours:"));
-
-if (!isNaN(hours)) {
-    console.log("Hours in seconds:", hoursToSeconds(hours));
-}
-
+hoursInput.addEventListener("input", function () {
+    let hours = Number(hoursInput.value);
+    
+    if (hoursInput.value === "") {
+        hoursResult.value = "";
+    } else if (hours <= 0) {
+        hoursResult.value = "Error: Hours must be greater than 0";
+    } else {
+        hoursResult.value = hours * 3600;
+    }
+});
 
 // =======================================
 // TASK 3: Find Number Next to a Number
 // =======================================
 
-// Scenario 1: Find next number in an array
+// --- Scenario 1: Array Search ---
+const arraySearchInput = document.getElementById("arraySearchInput");
+const arraySearchResult = document.getElementById("arraySearchResult");
+const numbersArray = [10, 20, 30, 40, 50];
 
-function findNextNumber(arr, number) {
-    let index = arr.indexOf(number);
+arraySearchInput.addEventListener("input", function () {
+    let valStr = arraySearchInput.value.trim();
 
-    if (index !== -1 && index < arr.length - 1) {
-        return arr[index + 1];
-    } else {
-        return "No number exists next to it.";
+    if (valStr === "") {
+        arraySearchResult.value = "";
+        return;
     }
-}
 
-let numbers = [10, 20, 30, 40, 50];
+    let val = Number(valStr);
 
-console.log(
-    "Task 3 - Next number:",
-    findNextNumber(numbers, 30)
-);
-
-
-// Scenario 2: Integer or Float
-
-function findNextValue(value) {
-
-    if (Number.isInteger(value)) {
-        return value + 1;
-    } else {
-        return value + 0.1;
+    if (val === 0) {
+        arraySearchResult.value = "Error: Value cannot be 0";
+        return;
     }
-}
 
-let value = Number(
-    prompt("Task 3: Enter an integer or float:")
-);
+    let index = numbersArray.indexOf(val);
 
-if (!isNaN(value)) {
-    console.log("Next value:", findNextValue(value));
-}
+    if (index === -1) {
+        arraySearchResult.value = "Number not in array";
+    } else if (index === numbersArray.length - 1) {
+        arraySearchResult.value = "No number exists next to it";
+    } else {
+        arraySearchResult.value = numbersArray[index + 1];
+    }
+});
 
+
+// --- Scenario 2: Integer or Float ---
+const valueInput = document.getElementById("valueInput");
+const valueResult = document.getElementById("valueResult");
+
+valueInput.addEventListener("input", function () {
+    let valStr = valueInput.value.trim();
+
+    if (valStr === "") {
+        valueResult.value = "";
+        return;
+    }
+
+    let val = Number(valStr);
+
+    if (isNaN(val)) {
+        valueResult.value = "Error: Invalid number";
+    } else if (val === 0) {
+        valueResult.value = "Error: Value cannot be 0";
+    } else {
+        if (Number.isInteger(val)) {
+            valueResult.value = val + 1;
+        } else {
+            valueResult.value = (val + 0.1).toFixed(2);
+        }
+    }
+});
 
 // ===============================
-// TASK 4: Capitalize First Letter
+// TASK 4: Capitalize Name
 // ===============================
+const nameInput = document.getElementById("nameInput");
+const nameResult = document.getElementById("nameResult");
 
-function capitalizeName(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-}
-
-let name = prompt(
-    "Task 4: Enter your name in lowercase:"
-);
-
-if (name) {
-    console.log("Capitalized name:", capitalizeName(name));
-}
+nameInput.addEventListener("input", function () {
+    let str = nameInput.value.trim();
+    
+    if (str === "") {
+        nameResult.value = "";
+    } else if (str === "0") {
+        nameResult.value = "Error: Input cannot be 0";
+    } else if (!/^[a-z\s]+$/.test(str)) { 
+        // Generates error if any uppercase letter, number, or special character is entered
+        nameResult.value = "Error: Only lowercase letters allowed";
+    } else {
+        nameResult.value = str.charAt(0).toUpperCase() + str.slice(1);
+    }
+});
 
 
 // ===============================
 // TASK 5: BMI Calculator
 // ===============================
+const weightInput = document.getElementById("weightInput");
+const heightInput = document.getElementById("heightInput");
+const bmiResult = document.getElementById("bmiResult");
 
-function calculateBMI(weight, height) {
-    return weight / (height * height);
+function calculateBMI() {
+    let weight = Number(weightInput.value);
+    let height = Number(heightInput.value);
+
+    if (weightInput.value === "" || heightInput.value === "") {
+        bmiResult.value = "";
+        return;
+    }
+
+    if (weight <= 0 || height <= 0) {
+        bmiResult.value = "Error: Weight/Height must be greater than 0";
+    } else {
+        let bmi = weight / (height * height);
+        bmiResult.value = bmi.toFixed(2);
+    }
 }
 
-let weight = Number(
-    prompt("Task 5: Enter your weight in kg:")
-);
-
-let height = Number(
-    prompt("Task 5: Enter your height in meters:")
-);
-
-if (!isNaN(weight) && !isNaN(height)) {
-
-    let bmi = calculateBMI(weight, height);
-
-    console.log("Your BMI is:", bmi.toFixed(2));
-}
+weightInput.addEventListener("input", calculateBMI);
+heightInput.addEventListener("input", calculateBMI);
 
 
 // =================================
 // TASK 6: Random Array
 // =================================
+const generateBtn = document.getElementById("generateBtn");
+const arrayDisplay = document.getElementById("arrayDisplay");
+const firstLastResult = document.getElementById("firstLastResult");
 
-function generateRandomArray(size) {
-
+generateBtn.addEventListener("click", function () {
     let arr = [];
-
-    for (let i = 0; i < size; i++) {
-
-        let randomNumber =
-            Math.floor(Math.random() * 100) + 1;
-
-        arr.push(randomNumber);
+    for (let i = 0; i < 10; i++) {
+        // Generates random numbers strictly between 1 and 100 (never 0)
+        arr.push(Math.floor(Math.random() * 100) + 1);
     }
-
-    return arr;
-}
-
-
-function pickFirstAndLast(arr) {
-
-    return {
-        first: arr[0],
-        last: arr[arr.length - 1]
-    };
-}
-
-
-let randomArray = generateRandomArray(10);
-
-console.log("Task 6 - Random Array:", randomArray);
-
-let firstLast = pickFirstAndLast(randomArray);
-
-console.log("First Element:", firstLast.first);
-console.log("Last Element:", firstLast.last);
+    arrayDisplay.value = "[" + arr.join(", ") + "]";
+    firstLastResult.value = `First: ${arr[0]}, Last: ${arr[arr.length - 1]}`;
+});
 
 
 // =================================
-// TASK 7: Three Text Boxes
+// TASK 7: Three Text Boxes (Sum)
 // =================================
-
-let firstBox = document.getElementById("firstBox");
-let secondBox = document.getElementById("secondBox");
-let resultBox = document.getElementById("resultBox");
-
+const firstBox = document.getElementById("firstBox");
+const secondBox = document.getElementById("secondBox");
+const resultBox = document.getElementById("resultBox");
 
 function calculateSum() {
+    let val1 = firstBox.value.trim();
+    let val2 = secondBox.value.trim();
 
-    let firstNumber = parseInt(firstBox.value);
-    let secondNumber = parseInt(secondBox.value);
+    // Jab dono fields khali hon to result box bhi empty ho
+    if (val1 === "" && val2 === "") {
+        resultBox.value = "";
+        return;
+    }
 
-    resultBox.value = firstNumber + secondNumber;
+    let firstNumber = Number(val1);
+    let secondNumber = Number(val2);
+
+    // 0 Validation check
+    if ((val1 !== "" && firstNumber === 0) || (val2 !== "" && secondNumber === 0)) {
+        if (firstNumber === 0) {
+            resultBox.value = "Error: First number cannot be 0";
+        } else {
+            resultBox.value = "Error: Second number cannot be 0";
+        }
+        return;
+    }
+
+    // Agar dono me se koi ek field khali ho ya valid number na ho to NaN show hoga
+    if (val1 === "" || val2 === "" || isNaN(firstNumber) || isNaN(secondNumber)) {
+        resultBox.value = "NaN";
+    } else {
+        // Jab dono numbers enter ho jayenge tab exact Sum show hoga
+        resultBox.value = firstNumber + secondNumber;
+    }
 }
 
-
 firstBox.addEventListener("input", calculateSum);
-
 secondBox.addEventListener("input", calculateSum);

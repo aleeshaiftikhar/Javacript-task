@@ -1,43 +1,69 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-family: Arial, sans-serif;
     background-color: white;
 }
 
-.calculator {
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.task-card {
     width: 760px;
     padding: 20px;
     border: 3px solid #333;
     box-sizing: border-box;
-    margin-top: 50px;
+}
+
+.task-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
 .input-row {
     display: flex;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .input-row label {
     width: 290px;
-    font-size: 28px;
+    font-size: 24px;
     white-space: nowrap;
 }
+
 .input-row input {
     height: 42px;
     width: 395px;
-    padding: 5px;
-    font-size: 25px;
+    padding: 5px 10px;
+    font-size: 22px;
     box-sizing: border-box;
-    position: relative;
-    top: 5px;
 }
 
 .result-row {
+    margin-bottom: 10px;
+}
+
+.button-row {
     margin-bottom: 20px;
 }
 
-.result-row input {
-    width: 395px;
+.button-row button {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.button-row button:hover {
+    background-color: #555;
 }
