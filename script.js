@@ -165,7 +165,6 @@ generateBtn.addEventListener("click", function () {
     firstLastResult.value = `First: ${arr[0]}, Last: ${arr[arr.length - 1]}`;
 });
 
-
 // =================================
 // TASK 7: Three Text Boxes (Sum)
 // =================================
@@ -183,26 +182,15 @@ function calculateSum() {
         return;
     }
 
-    let firstNumber = Number(val1);
-    let secondNumber = Number(val2);
+    // Direct conversion: agar val2 empty hogi to num2 = NaN ho jayega
+    let num1 = val1 !== "" ? Number(val1) : NaN;
+    let num2 = val2 !== "" ? Number(val2) : NaN;
 
-    // 0 Validation check
-    if ((val1 !== "" && firstNumber === 0) || (val2 !== "" && secondNumber === 0)) {
-        if (firstNumber === 0) {
-            resultBox.value = "Error: First number cannot be 0";
-        } else {
-            resultBox.value = "Error: Second number cannot be 0";
-        }
-        return;
-    }
+    // Direct addition calculate karega (0 + 2 = 2)
+    let sum = num1 + num2;
 
-    // Agar dono me se koi ek field khali ho ya valid number na ho to NaN show hoga
-    if (val1 === "" || val2 === "" || isNaN(firstNumber) || isNaN(secondNumber)) {
-        resultBox.value = "NaN";
-    } else {
-        // Jab dono numbers enter ho jayenge tab exact Sum show hoga
-        resultBox.value = firstNumber + secondNumber;
-    }
+    // Agar koi ek field empty ho ya valid integer na ho to NaN show karega
+    resultBox.value = isNaN(sum) ? "NaN" : sum;
 }
 
 firstBox.addEventListener("input", calculateSum);
